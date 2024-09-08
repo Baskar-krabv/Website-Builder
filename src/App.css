@@ -2,16 +2,16 @@
   width:100%;
   height:100vh;
   display:grid;
-  background-color: #1d1b1b;
-  color: #F3BB09;
+  background-color:#ccc;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 header
 {
   width:100%;
-  height:15vh;
+  height:13vh;
   display: grid;
   place-items: center;
+  background-color:rgb(248, 18, 18);
 }
 .name{
   width:70%;
@@ -19,11 +19,14 @@ header
   align-items: center;
   justify-content:center;
   gap:2%;
+  color: white;
   margin-top:10px;
-  border:2px solid #F3BB09;
   border-radius:10px;
+  h1{
+    font-size:35px;
+  }
   i{
-    font-size:45px;
+    font-size:55px;
     color:#fdc716;
   }
 }
@@ -38,26 +41,33 @@ header
   height:73vh;
   display: grid;
   place-items: center;
-  background-color: #F3BB09;
+  background-color:rgb(240, 15, 15);
   border-radius: 5px;
-  box-shadow:10px 10px 10px rgb(10, 0, 0);
+  box-shadow:10px 10px 10px rgb(49, 49, 49);
 }
 .editor{
   width:95%;
   height:67vh;
+  overflow-y: scroll;
   background-color: white;
+  padding:10px;
 }
 .design__area{
   width:25%;
   height:73vh;
   overflow-y: scroll;
   display: grid;
+  background-color: white;
   place-items: center;
-  border:2px solid #F3BB09;
   border-radius:5px;
-  box-shadow:10px 10px 10px rgb(10, 0, 0);
+  border:1px solid #5f5e5ecc;
+  box-shadow:10px 10px 10px rgb(49, 49, 49);
   h3{
+    background-color:red;
     color: white;
+    width:20%;
+    border-radius:5px;
+    text-align: center;
     padding:5px;
     border-bottom: 1px solid white;
   }
@@ -73,7 +83,7 @@ header
   color: black;
   margin:20px;
   background-color:white;
-  border: 5px solid #F3BB09;
+  border: 3px solid gray;
   border-radius:5px;
   i{
     font-size:25px;
@@ -88,8 +98,14 @@ header
   place-items: center;
   margin:20px;
   gap:15px;
+  border:3px solid gray;
+  border-radius:5px;
   img{
     width:100%;
+  }
+  button{
+    outline: none;
+    border: none;
   }
 }
 #inpt{
