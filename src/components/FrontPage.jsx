@@ -1,42 +1,48 @@
 import { useState } from "react"
 // import $ from 'jquery';
-// import 'jquery-ui/ui/widgets/draggable'; 
-// import { useEffect } from "react";
+import 'jquery-ui/ui/widgets/sortable';
+import 'jquery-ui/ui/widgets/draggable'; 
 export const FrontPage = () => {
-  // useEffect(() => {
-  //   $(function () {
-  //     $("#Btn").draggable({ containment: "#Editor1", scroll: false });
-  //   });
-  // }, []);
-
-
   const [color, Setcolor] = useState('')
   const changeColor = (bgcolor) => {
     Setcolor(bgcolor)
   }
-
-
   const text = () => {
-    // const newTextEle=document.createElement("div")
+    const newTextEle=document.createElement("p")
     const inpt = document.createElement('input')
-    inpt.setAttribute("id", "inpt")
+    inpt.setAttribute("class", "inpt")
     document.querySelector(".editor").appendChild(inpt)
+    inpt.addEventListener('mouseleave',()=>{
+      newTextEle.textContent=inpt.value
+      inpt.style.display="none"
+      document.querySelector(".editor").appendChild(newTextEle)
+    })
+    newTextEle.addEventListener('click',()=>{
+      newTextEle.style.display="none"
+      inpt.style.display="block"
+      inpt.addEventListener('mouseleave',()=>{
+        newTextEle.textContent=inpt.value
+        inpt.style.display="none"
+        newTextEle.style.display="block"
+        document.querySelector(".editor").appendChild(newTextEle)
+      })
+    })
   }
-
-
   const btn = () => {
-    // const newTextEle=document.createElement("div")
+    const newTextEle=document.createElement("div")
     const inpt = document.createElement('button')
-    inpt.setAttribute('id', 'btn_add')
+    newTextEle.setAttribute('id', 'btn_add')
     inpt.textContent = "Click here"
-    document.querySelector(".editor").appendChild(inpt)
-  }
+    newTextEle.appendChild(inpt)
+    document.querySelector(".editor").appendChild(newTextEle)
 
+  }
 
   const img = () => {
     const fileRd = document.createElement('input')
     fileRd.type = "file"
     const imgEle = document.createElement('img')
+    imgEle.setAttribute("class","image")
     document.querySelector(".editor").appendChild(fileRd)
     fileRd.addEventListener('change', () => {
       const imgSrc = fileRd.files[0]
@@ -48,15 +54,15 @@ export const FrontPage = () => {
         reader.readAsDataURL(imgSrc)
         fileRd.style.display = "none"
         document.querySelector(".editor").appendChild(imgEle)
+        // $('.image').draggable({ containment: '#Editor1',scroll: false });
       }
     })
   }
-
-
     const vid_add = () => {
       const fileRd = document.createElement('input')
       fileRd.type = "file"
       const vidEle = document.createElement("video")
+      vidEle.setAttribute('id',"vid")
       document.querySelector(".editor").appendChild(fileRd)
       fileRd.addEventListener('change', () => {
         const vidSrc = fileRd.files[0]
@@ -75,19 +81,18 @@ export const FrontPage = () => {
 
     return (
       <div className="main">
-        <head>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-        </head>
         <header>
           <div className="name">
-            <i class="fa-solid fa-feather"></i>
+            <i className="fa-solid fa-feather"></i>
             <h1>WebSite Builder</h1>
           </div>
         </header>
         <div className="builder">
           <div className="build__area">
             <div className="editor" id="Editor1" style={{ background: color }}>
+              
             </div>
+            {/* {$('#Editor1').sortable()} */}
           </div>
           <div className="design__area">
             <h3>Tools</h3>
@@ -95,7 +100,7 @@ export const FrontPage = () => {
               <i onClick={text} className="fa-solid fa-font"></i>
               <i onClick={img} className="fa-regular fa-image"></i>
               <i onClick={btn} className="fa-solid fa-toggle-on"></i>
-              <i onClick={vid_add} class="fa-solid fa-file-video"></i>
+              <i onClick={vid_add} className="fa-solid fa-file-video"></i>
             </div>
             <h3>Colors</h3>
             <div className="templates">

@@ -2,7 +2,7 @@
   width:100%;
   height:100vh;
   display:grid;
-  background-color:#ccc;
+  background-color: black;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 header
@@ -11,7 +11,6 @@ header
   height:13vh;
   display: grid;
   place-items: center;
-  background-color:rgb(248, 18, 18);
 }
 .name{
   width:70%;
@@ -19,14 +18,14 @@ header
   align-items: center;
   justify-content:center;
   gap:2%;
-  color: white;
+  color:#fdc716;
   margin-top:10px;
   border-radius:10px;
   h1{
-    font-size:35px;
+    font-size:33px;
   }
   i{
-    font-size:55px;
+    font-size:50px;
     color:#fdc716;
   }
 }
@@ -41,13 +40,15 @@ header
   height:73vh;
   display: grid;
   place-items: center;
-  background-color:rgb(240, 15, 15);
+  background-color:#fdc716;
   border-radius: 5px;
-  box-shadow:10px 10px 10px rgb(49, 49, 49);
+ 
 }
 .editor{
   width:95%;
   height:67vh;
+  display: grid;
+  place-items: center;
   overflow-y: scroll;
   background-color: white;
   padding:10px;
@@ -60,11 +61,11 @@ header
   background-color: white;
   place-items: center;
   border-radius:5px;
-  border:1px solid #5f5e5ecc;
+  border:5px solid #fdc716;
   box-shadow:10px 10px 10px rgb(49, 49, 49);
   h3{
-    background-color:red;
-    color: white;
+    background-color:black;
+    color:#fdc716;
     width:20%;
     border-radius:5px;
     text-align: center;
@@ -108,9 +109,16 @@ header
     border: none;
   }
 }
-#inpt{
+.inpt{
   width:100%;
   height:10vh;
+  p{
+    width:50%;
+    height:10vh;
+    border:2px solid black;
+    padding:20px;
+      }
+    
 }
 #btn_add{
   width:20%;
@@ -121,4 +129,17 @@ header
   color: white;
   text-align: center;
   border-radius:20px;
+  button{
+    background-color: dodgerblue;
+    outline: none;
+    border: none;
+    color: white;
+    font-size:17px;
+  }
+}
+.image{
+  width:40%;
+}
+#vid{
+  width:40%;
 }
