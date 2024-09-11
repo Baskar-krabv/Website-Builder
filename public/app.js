@@ -1,10 +1,10 @@
 const express = require('express')
 const path = require('path')
 const mongoose = require('mongoose')
-const { randomInt } = require('crypto')
 const cors = require('cors')
 const app = express()
 app.use(cors())
+app.use(express.json())
 
 app.use(express.static('public'))
 
@@ -12,18 +12,18 @@ mongoose.connect('mongodb://localhost:27017/login_Details')
 .then(()=> console.log('Connected to DB'))
 .catch(err => console.log('Error: ', err))
 
-const profileSchema = mongoose.Schema({
+const login = mongoose.Schema({
     uname: String,
     pass: String,
 })
 
-const login = mongoose.model('login',login_Details)
+const upload = mongoose.model('upload',login)
 
-app.post('/pushData', upload.single('image'), async (req, res) =>{
+app.post('/pushData', async (req, res) =>{
     const body = req.body
-    const user = new Profile({
+    const user = new upload({
         uname: body.uname,
-        pass: body.pass,
+        pass: body.pass
     })  
     
     await user.save()
@@ -31,7 +31,7 @@ app.post('/pushData', upload.single('image'), async (req, res) =>{
 })
 
 app.get('/fetchData', async (req, res)=>{
-    const data = await Profile.find()
+    const data = await upload.find()
     res.status(200).send(data)
 })
 

@@ -1,30 +1,47 @@
 import { useState } from "react"
-// import $ from 'jquery';
+import $ from 'jquery';
 import 'jquery-ui/ui/widgets/sortable';
-import 'jquery-ui/ui/widgets/draggable'; 
+import 'jquery-ui/ui/widgets/draggable';
+import 'jquery-ui/ui/widgets/resizable';
+import 'jquery-ui/themes/base/all.css';  
 export const FrontPage = () => {
   const [color, Setcolor] = useState('')
   const changeColor = (bgcolor) => {
     Setcolor(bgcolor)
   }
   const text = () => {
+    const div = document.createElement('div')
+    div.setAttribute("class", "textDiv")
     const newTextEle=document.createElement("p")
     const inpt = document.createElement('input')
     inpt.setAttribute("class", "inpt")
+    newTextEle.setAttribute("class", "para")
     document.querySelector(".editor").appendChild(inpt)
     inpt.addEventListener('mouseleave',()=>{
       newTextEle.textContent=inpt.value
       inpt.style.display="none"
-      document.querySelector(".editor").appendChild(newTextEle)
+      div.appendChild(newTextEle)
+      document.querySelector(".editor").appendChild(div)
+      $('.textDiv').draggable({ containment: '#Editor1',scroll: false });
+      $( ".para" ).resizable({
+        containment: "#Editor1"
+      })
     })
     newTextEle.addEventListener('click',()=>{
       newTextEle.style.display="none"
+      div.style.display="none"
       inpt.style.display="block"
       inpt.addEventListener('mouseleave',()=>{
         newTextEle.textContent=inpt.value
         inpt.style.display="none"
         newTextEle.style.display="block"
-        document.querySelector(".editor").appendChild(newTextEle)
+        div.style.display="block"
+        div.appendChild(newTextEle)
+        document.querySelector(".editor").appendChild(div)
+        $('.textDiv').draggable({ containment: '#Editor1',scroll: false });
+        $( ".para" ).resizable({
+          containment: "#Editor1"
+        })
       })
     })
   }
@@ -35,7 +52,7 @@ export const FrontPage = () => {
     inpt.textContent = "Click here"
     newTextEle.appendChild(inpt)
     document.querySelector(".editor").appendChild(newTextEle)
-
+    $('#btn_add').draggable({ containment: '#Editor1',scroll: false });
   }
 
   const img = () => {
@@ -54,7 +71,7 @@ export const FrontPage = () => {
         reader.readAsDataURL(imgSrc)
         fileRd.style.display = "none"
         document.querySelector(".editor").appendChild(imgEle)
-        // $('.image').draggable({ containment: '#Editor1',scroll: false });
+        $('.image').draggable({ containment: '#Editor1',scroll: false });
       }
     })
   }
@@ -74,6 +91,8 @@ export const FrontPage = () => {
           reader.readAsDataURL(vidSrc)
           fileRd.style.display = "none"
           document.querySelector(".editor").appendChild(vidEle)
+          $('#vid').draggable({ containment: '#Editor1',scroll: false });
+
         }
       })
     }
