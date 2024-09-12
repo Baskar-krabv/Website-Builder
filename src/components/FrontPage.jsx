@@ -11,6 +11,8 @@ export const FrontPage = () => {
   }
   const text = () => {
     const div = document.createElement('div')
+    const del=document.createElement('i')
+    del.setAttribute('class','fa-solid fa-trash')
     div.setAttribute("class", "textDiv")
     const newTextEle=document.createElement("p")
     const inpt = document.createElement('input')
@@ -20,12 +22,13 @@ export const FrontPage = () => {
     inpt.addEventListener('mouseleave',()=>{
       newTextEle.textContent=inpt.value
       inpt.style.display="none"
+      div.appendChild(del)
       div.appendChild(newTextEle)
       document.querySelector(".editor").appendChild(div)
       $('.textDiv').draggable({ containment: '#Editor1',scroll: false });
       $( ".para" ).resizable({
-        containment: "#Editor1"
-      })
+        containment: ".editor"
+      }) 
     })
     newTextEle.addEventListener('click',()=>{
       newTextEle.style.display="none"
@@ -40,22 +43,32 @@ export const FrontPage = () => {
         document.querySelector(".editor").appendChild(div)
         $('.textDiv').draggable({ containment: '#Editor1',scroll: false });
         $( ".para" ).resizable({
-          containment: "#Editor1"
+          containment: ".editor"
         })
       })
     })
   }
   const btn = () => {
+    const div=document.createElement('div')
+    div.setAttribute("class", "textDiv")
+    const del=document.createElement('i')
+    del.setAttribute('class','fa-solid fa-trash')
     const newTextEle=document.createElement("div")
     const inpt = document.createElement('button')
     newTextEle.setAttribute('id', 'btn_add')
     inpt.textContent = "Click here"
+    div.appendChild(del)
     newTextEle.appendChild(inpt)
-    document.querySelector(".editor").appendChild(newTextEle)
-    $('#btn_add').draggable({ containment: '#Editor1',scroll: false });
+    div.appendChild(newTextEle)
+    document.querySelector(".editor").appendChild(div)
+    $('.textDiv').draggable({ containment: '#Editor1',scroll: false });
   }
 
   const img = () => {
+    const div=document.createElement('div')
+    div.setAttribute("class", "textDiv")
+    const del=document.createElement('i')
+    del.setAttribute('class','fa-solid fa-trash')
     const fileRd = document.createElement('input')
     fileRd.type = "file"
     const imgEle = document.createElement('img')
@@ -70,8 +83,13 @@ export const FrontPage = () => {
         }
         reader.readAsDataURL(imgSrc)
         fileRd.style.display = "none"
-        document.querySelector(".editor").appendChild(imgEle)
-        $('.image').draggable({ containment: '#Editor1',scroll: false });
+        div.appendChild(del)
+        div.appendChild(imgEle)
+        document.querySelector(".editor").appendChild(div)
+        $('.textDiv').draggable({ containment: '#Editor1',scroll: false });
+        $( ".textDiv" ).resizable({
+          containment: ".editor"
+        })
       }
     })
   }

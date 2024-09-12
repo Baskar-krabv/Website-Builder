@@ -48,7 +48,8 @@ header
   width:95%;
   height:67vh;
   display: grid;
-  place-items: center;
+  align-items: flex-start;
+  justify-content: center;
   overflow-wrap: anywhere;
   overflow-y: scroll;
   background-color: white;
@@ -122,7 +123,7 @@ header
     
 }
 #btn_add{
-  width:20%;
+  width:auto;
   display:grid;
   place-items: center;
   padding:20px;
@@ -195,7 +196,12 @@ header
   .textDiv{
     width:auto;
     height: auto;
+    display: grid;
+    place-items: center;
     padding:20px;
     text-align: center;
     border:1px solid #ccc;
+    i{
+      margin-bottom:20%;
+    }
   }
