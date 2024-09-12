@@ -77,38 +77,38 @@ header
 }
 .formatting__tools{
   width:80%;
-  height:20vh;
+  height:auto;
   display: flex;
   align-items:center;
   flex-wrap: wrap;
   justify-content: center;
-  gap:15%;
+  padding:10px;
+  row-gap:3px;
+  column-gap:20px;
   color: black;
-  margin:20px;
+  margin:5px;
   background-color:white;
   border: 3px solid gray;
   border-radius:5px;
   i{
     font-size:25px;
-    padding:3% 4%;
-    border:2px solid;
     border-radius:5px;
   }
 }
 .templates{
-  width:80%;
+  width:auto;
   display: grid;
   place-items: center;
-  margin:20px;
+  padding:10px;
   gap:15px;
   border:3px solid gray;
   border-radius:5px;
-  img{
-    width:100%;
-  }
   button{
     outline: none;
     border: none;
+    padding:10px 12px;
+    background-color: dodgerblue;
+    color: white;
   }
 }
 .inpt{
@@ -201,7 +201,33 @@ header
     padding:20px;
     text-align: center;
     border:1px solid #ccc;
-    i{
-      margin-bottom:20%;
-    }
+    
   }
+  .textdiv{
+    width:auto;
+    height: auto;
+    padding:8px;
+    display: grid;
+    place-items: center;
+    border:1px solid #ccc;
+  }
+  .fa-trash{
+    position: absolute;
+    top: 5px;
+    right: 3px;
+}
+.color{
+  position: absolute;
+  top: 5px;
+  right:70px;
+}
+.fa-check{
+  position: absolute;
+  top: 8px;
+  right: 50px;
+}
+.tool{
+  padding:8px;
+  display: grid;
+  place-items: center;
+}
