@@ -25,6 +25,9 @@ export const FrontPage = () => {
     inpt.setAttribute("class", "inpt")
     newTextEle.setAttribute("class", "para")
     document.querySelector(".editor").appendChild(inpt)
+    del.addEventListener('click', () => {
+      document.querySelector(".editor").removeChild(div)
+    })
     inpt.addEventListener('mouseleave', () => {
       newTextEle.textContent = inpt.value
       inpt.style.display = "none"
@@ -55,15 +58,10 @@ export const FrontPage = () => {
         })
       })
     })
-    document.querySelector('.fa-check').addEventListener('click',()=>{
-      document.querySelector('.para').color=document.querySelector('.color').value
-  })
-    del.addEventListener('click', () => {
-      document.querySelector(".editor").removeChild(div)
-    })
-    
+  //   document.querySelector('.fa-check').addEventListener('click',()=>{
+  //     document.querySelector('.para').color=document.querySelector('.color').value
+  // })  
   }
-  
   const btn = () => {
     const div = document.createElement('div')
     div.setAttribute("class", "textDiv")
@@ -146,13 +144,24 @@ export const FrontPage = () => {
   }
 
 
+  const preview=()=>{
+    const builder= document.querySelector('.builder')
+    const pre=document.createElement("div")
+    document.querySelector('.header').style.display="none"
+    document.querySelector('.design__area').style.display="none"
+    pre.classList.add('pre')
+    pre.appendChild(builder)
+    document.querySelector('.main').appendChild(pre)
+
+      }
   return (
     <div className="main">
-      <header>
+      <header className="header">
         <div className="name">
           <i className="fa-solid fa-feather"></i>
           <h1>WebSite Builder</h1>
         </div>
+        <button className="preview" onClick={preview}>Preview</button>
       </header>
       <div className="builder">
         <div className="build__area">
@@ -187,6 +196,9 @@ export const FrontPage = () => {
             <button onClick={changeColor}>SetBackgroundColor</button>
           </div>
         </div>
+      </div>
+      <div className="prev">
+
       </div>
     </div>
   )
