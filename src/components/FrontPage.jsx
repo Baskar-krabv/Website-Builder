@@ -9,7 +9,7 @@ export const FrontPage = () => {
   const changeColor = () => {
     Setcolor(document.getElementById('col').value)
   }
-  
+  // To add a text
   const text = () => {
     const col=document.createElement('input')
     col.type="color"
@@ -58,10 +58,18 @@ export const FrontPage = () => {
         })
       })
     })
-  //   document.querySelector('.fa-check').addEventListener('click',()=>{
-  //     document.querySelector('.para').color=document.querySelector('.color').value
-  // })  
+    const clik=document.querySelector('.fa-check')
+    if(clik)
+    clik.addEventListener('click',()=>{
+      const c=document.querySelector('.color')
+      if(c)
+      document.querySelector('.para').color=c.value
+  })  
   }
+
+  // text added end
+
+  // To add a button
   const btn = () => {
     const div = document.createElement('div')
     div.setAttribute("class", "textDiv")
@@ -81,6 +89,9 @@ export const FrontPage = () => {
     })
   }
 
+  // Button added end
+
+  // To add a image
   const img = () => {
     const div = document.createElement('div')
     div.setAttribute("class", "textdiv")
@@ -113,6 +124,10 @@ export const FrontPage = () => {
       document.querySelector(".editor").removeChild(div)
     })
   }
+  // image added end
+
+
+  // To add a video
   const vid_add = () => {
     const div = document.createElement('div')
     div.setAttribute("class", "textdiv")
@@ -143,17 +158,31 @@ export const FrontPage = () => {
     })
   }
 
+  // Video added end
 
+  // Preview button
   const preview=()=>{
+    const back=document.createElement('i')
+    back.setAttribute('class','fa-solid fa-arrow-left-long')
+    const txtDiv=document.querySelector('.txtDiv')
     const builder= document.querySelector('.builder')
     const pre=document.createElement("div")
     document.querySelector('.header').style.display="none"
     document.querySelector('.design__area').style.display="none"
     pre.classList.add('pre')
+    pre.appendChild(back)
     pre.appendChild(builder)
     document.querySelector('.main').appendChild(pre)
+    if(txtDiv)
+      $('.para').draggable({ disabled: true })
+      $('.txtDiv').draggable({ disabled: true })
+    $('.textdiv').draggable({ disabled: true });
+    $('.editor').sortable({ disabled: true });
 
-      }
+}
+
+// End preview button
+
   return (
     <div className="main">
       <header className="header">
@@ -161,14 +190,14 @@ export const FrontPage = () => {
           <i className="fa-solid fa-feather"></i>
           <h1>WebSite Builder</h1>
         </div>
-        <button className="preview" onClick={preview}>Preview</button>
+        <button className="preview" onClick={preview}>Preview <i className="fa-solid fa-eye"></i></button>
       </header>
       <div className="builder">
         <div className="build__area">
           <div className="editor" id="Editor1" style={{ background: color }}>
 
           </div>
-          {/* {$('#Editor1').sortable()} */}
+         
         </div>
         <div className="design__area">
           <h3>Tools</h3>
